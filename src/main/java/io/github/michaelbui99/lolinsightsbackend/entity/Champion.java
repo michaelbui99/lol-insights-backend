@@ -45,7 +45,7 @@ public class Champion {
     }
 
 
-    class ChampionsBuilder {
+    public static class ChampionsBuilder {
         private com.merakianalytics.orianna.types.core.staticdata.Champion champion;
         private float winRate;
         private float pickRate;
