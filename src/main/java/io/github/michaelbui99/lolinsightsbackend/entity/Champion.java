@@ -7,6 +7,7 @@ public class Champion {
     private float banRate;
 
     private Champion(ChampionsBuilder builder) {
+        this.champion = builder.champion;
         this.winRate = builder.winRate;
         this.pickRate = builder.pickRate;
         this.banRate = builder.banRate;

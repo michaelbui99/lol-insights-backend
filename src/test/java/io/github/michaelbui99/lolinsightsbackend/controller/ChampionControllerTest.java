@@ -1,26 +1,22 @@
 package io.github.michaelbui99.lolinsightsbackend.controller;
 
-import io.github.michaelbui99.lolinsightsbackend.entity.Champion;
 import io.github.michaelbui99.lolinsightsbackend.service.ChampionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class ChampionControllerTest {
     private ChampionService championServiceMock;
-    private ChampionController controller;
+    private ChampionsController controller;
 
     @BeforeEach
     public void setup() {
         championServiceMock = Mockito.mock(ChampionService.class);
-        controller = new ChampionController(championServiceMock);
+        controller = new ChampionsController(championServiceMock);
     }
 
     @Test
@@ -35,11 +31,11 @@ class ChampionControllerTest {
     @Test
     public void constructor_InitialiseController_CreatesControllerInstance() {
         // Arrange
-        ChampionController controllerUnderTest;
+        ChampionsController controllerUnderTest;
 
         try {
             // Act
-            controllerUnderTest = new ChampionController(championServiceMock);
+            controllerUnderTest = new ChampionsController(championServiceMock);
 
             // Assert
             assertNotNull(controllerUnderTest);
