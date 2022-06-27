@@ -13,11 +13,11 @@ public class RegionMap {
 
     private RegionMap() {
         regionMappings = new HashMap<>();
-        regionMappings.put("euw", Region.EUROPE_WEST);
-        regionMappings.put("eune", Region.EUROPE_NORTH_EAST);
-        regionMappings.put("na", Region.NORTH_AMERICA);
-        regionMappings.put("kr", Region.KOREA);
-        regionMappings.put("jp", Region.JAPAN);
+        regionMappings.put("EUW1", Region.EUROPE_WEST);
+        regionMappings.put("EUN1", Region.EUROPE_NORTH_EAST);
+        regionMappings.put("NA1", Region.NORTH_AMERICA);
+        regionMappings.put("KR", Region.KOREA);
+        regionMappings.put("JP1", Region.JAPAN);
     }
 
     public static RegionMap getInstance() {
