@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class SummonerRepositoryImpl implements SummonerRepository {
+    public SummonerRepositoryImpl() {
+    }
+
     @Override
     public Summoner getSummonerByName(String summonerName, Region region) {
         if (region == null) {

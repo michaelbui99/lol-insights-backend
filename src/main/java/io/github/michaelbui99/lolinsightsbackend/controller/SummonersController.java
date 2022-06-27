@@ -1,5 +1,6 @@
 package io.github.michaelbui99.lolinsightsbackend.controller;
 
+import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import io.github.michaelbui99.lolinsightsbackend.entity.RegionMap;
@@ -36,13 +37,17 @@ public class SummonersController {
         }
 
         try {
+            logger.info("GET request for /summoners/"+summonerName + " has been received");
             Summoner summoner = summonerService.getSummonerByName(summonerName, chosenRegion);
             return ResponseEntity.ok(summoner);
         } catch (IllegalArgumentException e) {
+            logger.error(e.getMessage());
             return ResponseEntity.badRequest().build();
         } catch (SummonerNotFoundException e) {
+            logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         } catch (Exception e) {
+            logger.error(e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
     }

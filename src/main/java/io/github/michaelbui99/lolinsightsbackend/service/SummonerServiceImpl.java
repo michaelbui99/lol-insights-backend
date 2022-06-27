@@ -22,11 +22,11 @@ public class SummonerServiceImpl implements SummonerService {
     public Summoner getSummonerByName(String summonerName, Region region) {
         Summoner summoner;
 
-        if (summonerName == null){
+        if (summonerName == null) {
             throw new IllegalArgumentException("Summoner name must be specified");
         }
 
-        if ("".equals(summonerName) || summonerName.trim().isEmpty()){
+        if ("".equals(summonerName) || summonerName.trim().isEmpty()) {
             throw new IllegalArgumentException("Summoner name must be specified");
         }
 
@@ -34,6 +34,8 @@ public class SummonerServiceImpl implements SummonerService {
             summoner = Orianna.summonerNamed(summonerName).get();
         } else {
             summoner = Orianna.summonerNamed(summonerName).withRegion(region).get();
+            // DO NOT REMOVE
+            System.out.println(summoner.getLevel()); // Summoner is only fetched when this is called for some reason?
         }
 
         if (summoner == null) {
