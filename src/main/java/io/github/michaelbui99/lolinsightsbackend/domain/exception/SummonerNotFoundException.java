@@ -1,4 +1,4 @@
-package io.github.michaelbui99.lolinsightsbackend.exception;
+package io.github.michaelbui99.lolinsightsbackend.domain.exception;
 
 public class SummonerNotFoundException extends RuntimeException {
     public SummonerNotFoundException() {

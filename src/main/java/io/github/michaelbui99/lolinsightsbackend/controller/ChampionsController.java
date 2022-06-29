@@ -1,7 +1,6 @@
 package io.github.michaelbui99.lolinsightsbackend.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.michaelbui99.lolinsightsbackend.entity.Champion;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.Champion;
 import io.github.michaelbui99.lolinsightsbackend.service.ChampionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

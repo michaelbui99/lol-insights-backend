@@ -1,6 +1,6 @@
 package io.github.michaelbui99.lolinsightsbackend.service;
 
-import io.github.michaelbui99.lolinsightsbackend.entity.Champion;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.Champion;
 import io.github.michaelbui99.lolinsightsbackend.repository.ChampionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

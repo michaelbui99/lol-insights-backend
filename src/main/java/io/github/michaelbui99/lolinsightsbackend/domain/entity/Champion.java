@@ -1,4 +1,4 @@
-package io.github.michaelbui99.lolinsightsbackend.entity;
+package io.github.michaelbui99.lolinsightsbackend.domain.entity;
 
 public class Champion {
     private com.merakianalytics.orianna.types.core.staticdata.Champion champion;
