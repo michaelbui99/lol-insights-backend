@@ -1,10 +1,9 @@
 package io.github.michaelbui99.lolinsightsbackend.controller;
 
-import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
-import io.github.michaelbui99.lolinsightsbackend.entity.RegionMap;
-import io.github.michaelbui99.lolinsightsbackend.exception.SummonerNotFoundException;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.RegionMap;
+import io.github.michaelbui99.lolinsightsbackend.domain.exception.SummonerNotFoundException;
 import io.github.michaelbui99.lolinsightsbackend.service.SummonerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +26,9 @@ public class SummonersController {
         this.regionMappings = RegionMap.getInstance().getRegionMappings();
     }
 
-    @GetMapping("{summonerName}")
-    public ResponseEntity<Summoner> getSummonerByName(@PathVariable String summonerName, @RequestParam(required =
-            false) String region) {
+    @GetMapping("{region}/{summonerName}")
+    public ResponseEntity<Summoner> getSummonerByName(@PathVariable String summonerName,
+                                                      @PathVariable String region) {
         Region chosenRegion = null;
 
         if (region != null) {

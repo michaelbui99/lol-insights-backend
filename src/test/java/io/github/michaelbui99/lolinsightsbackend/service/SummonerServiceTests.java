@@ -1,6 +1,7 @@
 package io.github.michaelbui99.lolinsightsbackend.service;
 
 import com.merakianalytics.orianna.types.common.Region;
+import io.github.michaelbui99.lolinsightsbackend.domain.validation.SummonerNameValidator;
 import io.github.michaelbui99.lolinsightsbackend.repository.SummonerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ class SummonerServiceTests {
     @BeforeEach
     public void setup() {
         summonerRepositoryMock = Mockito.mock(SummonerRepository.class);
-        summonerService = new SummonerServiceImpl(summonerRepositoryMock);
+        summonerService = new SummonerServiceImpl(summonerRepositoryMock, new SummonerNameValidator());
     }
 
     @Test
