@@ -9,6 +9,8 @@ import io.github.michaelbui99.lolinsightsbackend.repository.SummonerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SummonerServiceImpl implements SummonerService {
     private final SummonerRepository summonerRepository;
@@ -30,9 +32,6 @@ public class SummonerServiceImpl implements SummonerService {
             summoner = summonerRepository.getSummonerByName(summonerName, Constants.DEFAULT_REGION);
         } else {
             summoner = summonerRepository.getSummonerByName(summonerName, region);
-
-            // DO NOT REMOVE
-            System.out.println(summoner.getLevel()); // Summoner is only fetched when this is called for some reason?
         }
 
         if (summoner == null) {
@@ -43,7 +42,9 @@ public class SummonerServiceImpl implements SummonerService {
     }
 
     @Override
-    public Summoner getSummonersByName(String summonerName, Region region) {
-        throw new RuntimeException("NOT IMPLEMENTED YET");
+    public List<Summoner> getSummonersByName(String summonerName, Region region) {
+        summonerNameValidator.validateName(summonerName);
+        List<Summoner> summonersToReturn = summonerRepository.getSummonersByName(summonerName, region);
+        return summonersToReturn;
     }
 }

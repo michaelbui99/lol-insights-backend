@@ -14,10 +14,17 @@ public class SummonerRepositoryImpl implements SummonerRepository {
 
     @Override
     public Summoner getSummonerByName(String summonerName, Region region) {
+        Summoner summoner;
+
         if (region == null) {
-            return Orianna.summonerNamed(summonerName).get();
+            summoner = Orianna.summonerNamed(summonerName).get();
+        }else{
+            summoner = Orianna.summonerNamed(summonerName).withRegion(region).get();
         }
-        return Orianna.summonerNamed(summonerName).withRegion(region).get();
+
+        // DO NOT REMOVE
+        summoner.getLevel(); // Summoner is only fetched when this is called for some reason?
+        return summoner;
     }
 
     @Override

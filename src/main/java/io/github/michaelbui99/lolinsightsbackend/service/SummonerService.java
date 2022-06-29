@@ -4,6 +4,8 @@ import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import io.github.michaelbui99.lolinsightsbackend.domain.exception.SummonerNotFoundException;
 
+import java.util.List;
+
 public interface SummonerService {
     /**
      * Returns a summoner with the provided summonerName in the specified region
@@ -16,5 +18,5 @@ public interface SummonerService {
      */
     public Summoner getSummonerByName(String summonerName, Region region);
 
-    public Summoner getSummonersByName(String summonerName, Region region);
+    public List<Summoner> getSummonersByName(String summonerName, Region region);
 }
