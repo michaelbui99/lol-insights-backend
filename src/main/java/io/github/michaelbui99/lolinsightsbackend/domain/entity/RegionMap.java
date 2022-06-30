@@ -1,4 +1,4 @@
-package io.github.michaelbui99.lolinsightsbackend.entity;
+package io.github.michaelbui99.lolinsightsbackend.domain.entity;
 
 import com.merakianalytics.orianna.types.common.Region;
 

@@ -1,6 +1,6 @@
 package io.github.michaelbui99.lolinsightsbackend.repository;
 
-import io.github.michaelbui99.lolinsightsbackend.entity.Champion;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.Champion;
 
 import java.util.List;
 import java.util.NoSuchElementException;

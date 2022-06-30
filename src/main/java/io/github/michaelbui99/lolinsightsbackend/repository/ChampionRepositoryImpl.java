@@ -2,7 +2,7 @@ package io.github.michaelbui99.lolinsightsbackend.repository;
 
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.staticdata.Champions;
-import io.github.michaelbui99.lolinsightsbackend.entity.Champion;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.Champion;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
