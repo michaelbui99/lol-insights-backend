@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1")
+@CrossOrigin
 public class SummonersController {
     private final Logger logger = LoggerFactory.getLogger(SummonersController.class);
     private final SummonerService summonerService;
