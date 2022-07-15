@@ -94,13 +94,14 @@ public class SummonersController {
                 return ResponseEntity.badRequest().build();
             }
 
-            if (queueType.toLowerCase() == QueueType.SOLO.name().toLowerCase()){
+            if (queueType.toLowerCase().equals(QueueType.SOLO.name().toLowerCase())) {
                 chosenQueueType = QueueType.SOLO;
-            }else{
+            } else {
                 chosenQueueType = QueueType.FLEX;
             }
 
-            League league = leagueService.getLeagueForSummonerByName(summonerName, regionMappings.get(region), chosenQueueType);
+            League league = leagueService.getLeagueForSummonerByName(summonerName, regionMappings.get(region),
+                    chosenQueueType);
             return ResponseEntity.ok(league);
         } catch (SummonerNotFoundException e) {
             logger.error(e.getMessage());
@@ -114,12 +115,12 @@ public class SummonersController {
         }
     }
 
-    private boolean isValidQueueType(String queueType){
-        if (queueType.toLowerCase().equals("solo")){
+    private boolean isValidQueueType(String queueType) {
+        if (queueType.toLowerCase().equals("solo")) {
             return true;
         }
 
-        if (queueType.toLowerCase().equals("flex")){
+        if (queueType.toLowerCase().equals("flex")) {
             return true;
         }
 

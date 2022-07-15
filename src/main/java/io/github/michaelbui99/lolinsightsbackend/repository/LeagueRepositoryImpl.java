@@ -1,5 +1,7 @@
 package io.github.michaelbui99.lolinsightsbackend.repository;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.merakianalytics.orianna.Orianna;
 import com.merakianalytics.orianna.types.common.Queue;
 import com.merakianalytics.orianna.types.core.league.League;
@@ -31,6 +33,13 @@ public class LeagueRepositoryImpl implements LeagueRepository {
                         leagueEntry.getQueue() == chosenQueue
                 )
                 .collect(Collectors.toList());
+
+        try {
+            System.out.println(new ObjectMapper().writeValueAsString(rankedSoloQueueLeagueEntries));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
         return rankedSoloQueueLeagueEntries.get(0).getLeague();
     }
 }
