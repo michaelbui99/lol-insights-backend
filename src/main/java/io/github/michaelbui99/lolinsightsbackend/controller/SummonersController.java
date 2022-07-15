@@ -90,7 +90,7 @@ public class SummonersController {
             logger.info("GET request received for /summoners/:region/:summonerName/league");
             QueueType chosenQueueType = null;
 
-            if (queueType.toLowerCase() != QueueType.FLEX.name().toLowerCase() || queueType.toLowerCase() != QueueType.SOLO.name().toLowerCase()) {
+            if (!isValidQueueType(queueType)) {
                 return ResponseEntity.badRequest().build();
             }
 
@@ -112,5 +112,17 @@ public class SummonersController {
             logger.error(e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    private boolean isValidQueueType(String queueType){
+        if (queueType.toLowerCase().equals("solo")){
+            return true;
+        }
+
+        if (queueType.toLowerCase().equals("flex")){
+            return true;
+        }
+
+        return false;
     }
 }
