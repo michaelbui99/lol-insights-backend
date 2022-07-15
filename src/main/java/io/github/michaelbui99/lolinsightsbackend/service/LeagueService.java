@@ -2,6 +2,7 @@ package io.github.michaelbui99.lolinsightsbackend.service;
 
 import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.league.League;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.QueueType;
 
 public interface LeagueService {
     /**
@@ -14,5 +15,5 @@ public interface LeagueService {
      * @throws io.github.michaelbui99.lolinsightsbackend.domain.exception.SummonerNotFoundException if no summoner
      * with the provided summoner name exists
      */
-    League getLeagueForSummonerByName(String summonerName, Region region);
+    League getLeagueForSummonerByName(String summonerName, Region region, QueueType queueType);
 }

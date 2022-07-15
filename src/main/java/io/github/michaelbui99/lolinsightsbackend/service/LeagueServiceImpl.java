@@ -4,6 +4,7 @@ import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.league.League;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import io.github.michaelbui99.lolinsightsbackend.domain.Constants;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.QueueType;
 import io.github.michaelbui99.lolinsightsbackend.domain.exception.SummonerNotFoundException;
 import io.github.michaelbui99.lolinsightsbackend.domain.validation.SummonerNameValidator;
 import io.github.michaelbui99.lolinsightsbackend.repository.LeagueRepository;
@@ -28,7 +29,7 @@ public class LeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public League getLeagueForSummonerByName(String summonerName, Region region) {
+    public League getLeagueForSummonerByName(String summonerName, Region region, QueueType queueType) {
         try {
             summonerNameValidator.validateName(summonerName);
 
@@ -37,8 +38,13 @@ public class LeagueServiceImpl implements LeagueService {
                 chosenRegion = region;
             }
 
+            QueueType chosenQueueType = Constants.DEFAULT_QUEUE_TYPE;
+            if (queueType != null){
+                chosenQueueType = queueType;
+            }
+
             Summoner summoner = summonerService.getSummonerByName(summonerName, chosenRegion);
-            League league = leagueRepository.getLeagueForSummoner(summoner);
+            League league = leagueRepository.getLeagueForSummoner(summoner, chosenQueueType);
             league.getName(); // Fixes a bug in the Orianna library where all entities are not initialized before
                              // actually calling a method on the entity
             return league;

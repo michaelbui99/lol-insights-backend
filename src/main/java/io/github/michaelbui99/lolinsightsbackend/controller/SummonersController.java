@@ -4,6 +4,7 @@ import com.merakianalytics.orianna.types.common.Region;
 import com.merakianalytics.orianna.types.core.league.League;
 import com.merakianalytics.orianna.types.core.summoner.Summoner;
 import io.github.michaelbui99.lolinsightsbackend.domain.Constants;
+import io.github.michaelbui99.lolinsightsbackend.domain.entity.QueueType;
 import io.github.michaelbui99.lolinsightsbackend.domain.entity.RegionMap;
 import io.github.michaelbui99.lolinsightsbackend.domain.exception.SummonerNotFoundException;
 import io.github.michaelbui99.lolinsightsbackend.service.LeagueService;
@@ -81,12 +82,25 @@ public class SummonersController {
         }
     }
 
-    @GetMapping("summoners/{region}/{summonerName}/league")
+    @GetMapping("summoners/{region}/{summonerName}/league/{queueType}")
     public ResponseEntity<League> getLeagueBySummonerName(@PathVariable String summonerName,
-                                                          @PathVariable String region) {
+                                                          @PathVariable String region,
+                                                          @PathVariable String queueType) {
         try {
             logger.info("GET request received for /summoners/:region/:summonerName/league");
-            League league = leagueService.getLeagueForSummonerByName(summonerName, regionMappings.get(region));
+            QueueType chosenQueueType = null;
+
+            if (queueType.toLowerCase() != QueueType.FLEX.name().toLowerCase() || queueType.toLowerCase() != QueueType.SOLO.name().toLowerCase()) {
+                return ResponseEntity.badRequest().build();
+            }
+
+            if (queueType.toLowerCase() == QueueType.SOLO.name().toLowerCase()){
+                chosenQueueType = QueueType.SOLO;
+            }else{
+                chosenQueueType = QueueType.FLEX;
+            }
+
+            League league = leagueService.getLeagueForSummonerByName(summonerName, regionMappings.get(region), chosenQueueType);
             return ResponseEntity.ok(league);
         } catch (SummonerNotFoundException e) {
             logger.error(e.getMessage());
