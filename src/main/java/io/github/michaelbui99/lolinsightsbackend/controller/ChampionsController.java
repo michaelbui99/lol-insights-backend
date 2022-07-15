@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+// TODO: Create DTOs and expose the DTOs instead of the domain objects
 @RestController
 @RequestMapping("api/v1/champions")
 @CrossOrigin

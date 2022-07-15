@@ -18,5 +18,13 @@ public interface SummonerService {
      */
     public Summoner getSummonerByName(String summonerName, Region region);
 
+    /**
+     * Returns a summoner with the provided summonerName in the specified region
+     *
+     * @param summonerName name of the summoner
+     * @param region       region of the summoner
+     * @throws IllegalArgumentException                                                      if summonerName is null,
+     *                                                                                       empty or white space only
+     */
     public List<Summoner> getSummonersByName(String summonerName, Region region);
 }
